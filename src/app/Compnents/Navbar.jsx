@@ -15,24 +15,24 @@ export default function Navbar() {
 
   const links = <>
   <li>
-            <Link href="#">Features</Link>
+            <Link href="sevices">Services</Link>
           </li>
           <li>
-            <Link href="#" className="font-medium text-accent" aria-current="page">
+            <Link href="dashboard" className="font-medium text-accent" aria-current="page">
               Dashboard
             </Link>
           </li>
-          <li>
-            <Link href="#">Pricing</Link>
-          </li>
+         { session?.user&& <li>
+            <Link href="profile">Profile</Link>
+          </li>}
   </>
   const authlinks = <>
   {
     session?.user? <> Welcome <span>{session.user.name}</span> <Button onPress={()=> signOut()}>Sign Out</Button> </>:
     
-    <> <Link href="/auth/sign-up">Sign In</Link>
+    <> <Link href="/sign-up">Sign In</Link>
 
-        <Link href="/auth/sign-in">  <Button >Sign Up</Button></Link></>
+        <Link href="/sign-in">  <Button >Sign Up</Button></Link></>
   }
   </>
 
@@ -72,7 +72,7 @@ export default function Navbar() {
           </button>
           <div className="flex items-center gap-3">
             {/* <Logo /> */}
-            <p className="font-bold">ACME</p>
+           <Link href="/"> <p className="font-bold">ACME</p></Link>
           </div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">

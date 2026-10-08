@@ -2,7 +2,7 @@
 "use client";
 import React from 'react';
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
-import { signUp } from '@/lib/auth-client';
+import { authClient, signUp } from '@/lib/auth-client';
 
 
 const SignUp = () => {
@@ -20,6 +20,11 @@ const SignUp = () => {
     })
     console.log(resData,error)
   };
+  const handelGoogleLoging = async()=>{
+    const data = await authClient.signIn.social({
+      provider: 'google'
+    })
+  }
     return (
         <div>
             <h1>Please sign in </h1>
@@ -85,6 +90,8 @@ const SignUp = () => {
         </Button>
       </div>
     </Form>
+
+    <Button onClick={handelGoogleLoging}>Google Sign</Button>
         </div>
     );
 };
